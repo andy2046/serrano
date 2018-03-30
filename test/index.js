@@ -1,9 +1,13 @@
-# serrano
-serialize error into POJO when you need to `JSON.stringify()` error
+const serrano = require('../dist/serrano')
 
-## Examples
-```js
-const serrano = require('serrano')
+console.log(serrano(function test(x) {
+  console.log('test', x)
+}))
+/*
+function test(x) {
+  console.log('test', x)
+}
+*/
 
 const error = new Error('error msg')
 
@@ -33,27 +37,3 @@ console.log(serrano(error))
 //=> { err: '[Circular]', message: 'error msg', stack: 'at Object.<anonymous> ...',
 //=> child: { message: 'child error msg', stack: 'at Object.<anonymous> ...' } }
 
-console.log(serrano(function test(x) {
-  console.log('test', x)
-}))
-/*
-function test(x) {
-  console.log('test', x)
-}
-*/
-```
-
-## Installation
-
-```
-npm install --save serrano
-```
-
-## Usage
-You can import from `serrano`:
-
-```js
-const serrano = require('serrano');
-// or
-import serrano from 'serrano';
-```
